@@ -69,7 +69,7 @@ pub(crate) fn get_fmspc(extension_section: &[u8]) -> Result<Fmspc> {
         .map_err(|_| anyhow!("Failed to decode Fmspc"))
 }
 
-pub fn get_cpu_svn(extension_section: &[u8]) -> Result<CpuSvn> {
+pub(crate) fn get_cpu_svn(extension_section: &[u8]) -> Result<CpuSvn> {
     let data = find_extension(
         &[oids::TCB.as_bytes(), oids::CPUSVN.as_bytes()],
         extension_section,
@@ -82,7 +82,7 @@ pub fn get_cpu_svn(extension_section: &[u8]) -> Result<CpuSvn> {
         .map_err(|_| anyhow!("Failed to decode CpuSvn"))
 }
 
-pub fn get_pce_svn(extension_section: &[u8]) -> Result<Svn> {
+pub(crate) fn get_pce_svn(extension_section: &[u8]) -> Result<Svn> {
     let data = find_extension(
         &[oids::TCB.as_bytes(), oids::PCESVN.as_bytes()],
         extension_section,
